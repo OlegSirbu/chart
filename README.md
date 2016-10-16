@@ -1,3 +1,4 @@
 # chart
-npm init
+npm init,
+
 npm run dev
