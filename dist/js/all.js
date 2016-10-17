@@ -37,3 +37,5 @@ jQuery('#region').popSelect({
     placeholderText: 'Click to Add More',
     position: 'bottom'
 });
+
+console.log('test');

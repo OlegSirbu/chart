@@ -1,0 +1,28 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "jquery": "~2.1.0",
+    "jquery-ui": "~1.11.4",
+    "normalize-css": "normalize.css#~3.0.3",
+    "bootstrap-less": "~3.3.4",
+    "popSelect": "*",
+    "chartist": "^0.9.8"
+  },
+  "homepage": "https://github.com/OlegSirbu/ng-cimpress",
+  "authors": [
+    "Oleg Syrbu <olegsirbu2@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./bower_components",
+    "test",
+    "tests"
+  ]
+}
