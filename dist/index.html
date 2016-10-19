@@ -1,7 +1,6 @@
 <html>
 <head>
     <title>Webpack Tutorial</title>
-
     <link rel="stylesheet" href="css/style.css">
 
     <!--<link rel="stylesheet" href="/css/bootstrap.min.css">-->
@@ -9,54 +8,68 @@
     <!--<link rel="stylesheet" href="/css/jquery.popSelect.css">-->
 
 </head>
-<body>
+<body class="container-fluid">
 
-
- <div class="row">
+<div class="row">
     <div class="col-md-3">
-        <label for="instanceType">Email</label>
-        <select class="form-control" name="city" id="instanceType" multiple>
-            <option value="green">Green</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="violet">Violet</option>
-            <option value="orange">Orange</option>
-            <option value="white" selected="selected">White</option>
+        <label for="instanceType">Instance type</label>
+        <select class="form-control" name="instanceType" id="instanceType" multiple>
+            <option value="t1.micro">t1.micro</option>
+            <option value="m4.large">m4.large</option>
+            <option value="m3.medium">m3.medium</option>
+            <option value="t4.micro">t4.micro</option>
         </select>
     </div>
-     <div class="col-md-3">
-         <label for="typeMachine">Email</label>
-         <select class="form-control" name="city" id="typeMachine" multiple>
-             <option value="green">Green</option>
-             <option value="red">Red</option>
-             <option value="blue">Blue</option>
-             <option value="violet">Violet</option>
-             <option value="orange">Orange</option>
-             <option value="white" selected="selected">White</option>
-         </select>
-     </div>
-     <div class="col-md-3">
-         <label for="region">Email</label>
-         <select class="form-control" name="city" id="region" multiple>
-             <option value="green">Green</option>
-             <option value="red">Red</option>
-             <option value="blue">Blue</option>
-             <option value="violet">Violet</option>
-             <option value="orange">Orange</option>
-             <option value="white" selected="selected">White</option>
-         </select>
-     </div>
+    <div class="col-md-3">
+        <div class="form-group">
+
+            <label class='col-md-12'>Time</label>
+            <div class='col-md-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input type='text' class="form-control"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <label for="region">Region</label>
+        <select class="form-control" name="region" id="region" multiple>
+            <option value="us-east-1">us-east-1</option>
+            <option value="us-east-2">us-east-2</option>
+            <option value="us-west-2">us-west-2</option>
+            <option value="ap-northeast-2">ap-northeast-2</option>
+            <option value="ap-southeast-1">ap-southeast-1</option>
+            <option value="ap-southeast-2">ap-southeast-2</option>
+            <option value="ap-northeast-1">ap-northeast-1</option>
+            <option value="eu-central-1">eu-central-1</option>
+            <option value="eu-west-1">eu-west-1</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <button class="btn btn-primary" type="submit">Button</button>
+    </div>
 </div>
-
-
 
 <div class="ct-chart ct-perfect-fourth"></div>
 
- <script src="js/libs/jquery.min.js"> </script>
- <script src="js/libs/jquery-ui.min.js"> </script>
- <script src="js/libs/jquery.popSelect.js"> </script>
- <script src="js/libs/chartist.js"> </script>
- <script src="js/libs/bootstrap.min.js"> </script>
- <script src="js/all.js"> </script>
+<script src="js/libs.js"></script>
+<script src="js/all.js"></script>
 </body>
 </html>

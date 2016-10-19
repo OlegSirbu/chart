@@ -1,12 +1,10 @@
-
 var options = {
-    width: 300,
-    height: 200
+    width: 700,
+    height: 500
 };
 var data = {
     // A labels array that can contain any sort of values
     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    // Our series array that contains series objects or in this case series data arrays
     series: [
         [5, 2, 4, 2, 0],
         [15, 32, 24, 12, 20],
@@ -38,4 +36,33 @@ jQuery('#region').popSelect({
     position: 'bottom'
 });
 
-console.log('test');
+jQuery('#time').popSelect({
+    showTitle: false,
+    placeholderText: 'Click to Add More',
+    position: 'bottom'
+});
+
+jQuery(function () {
+    jQuery('#datetimepicker1').datetimepicker({icons: {
+        time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        }}
+    );
+    jQuery('#datetimepicker2').datetimepicker({
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+        useCurrent: false //Important! See issue #1075
+    });
+    jQuery("#datetimepicker1").on("dp.change", function (e) {
+        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+    });
+    jQuery("#datetimepicker2").on("dp.change", function (e) {
+        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+});

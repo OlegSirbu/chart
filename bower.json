@@ -8,7 +8,8 @@
     "normalize-css": "normalize.css#~3.0.3",
     "bootstrap-less": "~3.3.4",
     "popSelect": "*",
-    "chartist": "^0.9.8"
+    "chartist": "^0.9.8",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.43"
   },
   "homepage": "https://github.com/OlegSirbu/ng-cimpress",
   "authors": [

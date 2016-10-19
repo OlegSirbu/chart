@@ -10,6 +10,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     watch = require('gulp-watch'),
     less = require('gulp-less-sourcemap');
+var runSequence = require('run-sequence');
+
 
 var src = {
         js: {
@@ -21,6 +23,8 @@ var src = {
                "./bower_components/jquery-ui/jquery-ui.min.js",
                "./bower_components/chartist/dist/chartist.js",
                "./bower_components/popSelect/dist/jquery.popSelect.js",
+               "./bower_components/moment/moment.js",
+               "./bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
                "./bower_components/bootstrap/dist/js/bootstrap.min.js"
             ]
         },
@@ -35,6 +39,11 @@ var src = {
             ]
         },
         img: {
+            fonts: [
+                "./bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+                "./bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+                "./bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
+            ],
             custom: [
                 './img/*.jpg'
             ]
@@ -56,7 +65,8 @@ gulp.task('css', function () {
 gulp.task('libs-js',function(){
    return gulp.src(src.js.libs)
       .pipe(uglify())
-      .pipe(gulp.dest(path.join(dist,'/js/libs')));
+      .pipe(concat('libs.js'))
+      .pipe(gulp.dest(path.join(dist,'/js')));
 });
 
 gulp.task('js', function () {
@@ -65,30 +75,40 @@ gulp.task('js', function () {
         .pipe(gulp.dest(dist));
 });
 
-gulp.task('img', function () {
-    return gulp.src(src.img.custom)
-        .pipe(gulp.dest(dist + '/img'));
+
+
+gulp.task('fonts', function () {
+    return gulp.src(src.img.fonts)
+        .pipe(gulp.dest(dist + '/fonts'));
 });
 
-gulp.task('watch', ['default'], function () {
+gulp.task('img', function () {
+    return gulp.src(src.img.custom)
+        .pipe(gulp.dest(dist + '/fonts'));
+});
+
+gulp.task('watch', function () {
     return gulp.watch(
         [
-            '.src/**/*.js',
-            '.src/**/*.html'
+            './src/*.js',
+            './src/*.html'
         ],
-        ['default']);
+        ['js']);
 });
 
 gulp.task('cl', function () {
     return del(['./dist/**/**/*']);
 });
 
-gulp.task('default', ['cl', 'img','libs-js', 'js', 'css'], function () {
-    var source = gulp.src(mainBowerFiles()
-        .concat(['./dist/**/*.js'])
-        .concat(['./dist/**/*.css']), {read: false}, {relative: true});
+gulp.task('default', function () {
+    runSequence('cl',
+        ['fonts', 'img','libs-js', 'js', 'css'], function () {
+            var source = gulp.src(mainBowerFiles()
+                .concat(['./dist/**/*.js'])
+                .concat(['./dist/**/*.css']), {read: false}, {relative: true});
 
-    return gulp.src(src.html.main)
-        .pipe(inject(source))
-        .pipe(gulp.dest(dist));
+            return gulp.src(src.html.main)
+                .pipe(inject(source))
+                .pipe(gulp.dest(dist));
+    });
 });
