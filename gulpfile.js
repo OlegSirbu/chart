@@ -21,16 +21,19 @@ var src = {
             libs:[
                "./bower_components/jquery/dist/jquery.min.js",
                "./bower_components/jquery-ui/jquery-ui.min.js",
-               "./bower_components/chartist/dist/chartist.js",
                "./bower_components/popSelect/dist/jquery.popSelect.js",
-               "./bower_components/moment/moment.js",
-               "./bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
-               "./bower_components/bootstrap/dist/js/bootstrap.min.js"
+               "./bower_components/bootstrap/dist/js/bootstrap.min.js",
+
+                "./node_modules/amcharts/dist/amcharts/amcharts.js",
+                "./node_modules/amcharts/dist/amcharts/serial.js",
+                "./node_modules/canvasjs/dist/canvasjs.2.js",
+                "./node_modules/canvasjs/dist/canvasjs.3.js",
+                "./node_modules/canvasjs/dist/jquery.canvasjs.js"
             ]
         },
         css: {
             custom: [
-                './css/*.css'
+                './src/*.css'
             ],
             libs: [
                 "./bower_components/bootstrap/dist/css/bootstrap.min.css",
@@ -55,7 +58,7 @@ var src = {
     dist = './dist';
 
 gulp.task('css', function () {
-    return gulp.src(src.css.libs)
+    return gulp.src(src.css.libs.concat(src.css.custom))
         .pipe(less())
         .pipe(concat('style.css'))
         // .pipe(minifyCSS())
@@ -64,7 +67,7 @@ gulp.task('css', function () {
 
 gulp.task('libs-js',function(){
    return gulp.src(src.js.libs)
-      .pipe(uglify())
+      // .pipe(uglify())
       .pipe(concat('libs.js'))
       .pipe(gulp.dest(path.join(dist,'/js')));
 });
@@ -98,6 +101,16 @@ gulp.task('watch', function () {
 
 gulp.task('cl', function () {
     return del(['./dist/**/**/*']);
+});
+
+gulp.task('watch', ['default'], function () {
+    return gulp.watch(
+        [
+            './src/*.js',
+            './src/*.html',
+            './src/*.css'
+        ],
+        ['default']);
 });
 
 gulp.task('default', function () {

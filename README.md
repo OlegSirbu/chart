@@ -1,4 +1,5 @@
 # chart
 npm init
+bower install
 
-npm run dev
+gulp watch
